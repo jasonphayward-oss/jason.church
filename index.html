@@ -44,8 +44,17 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; line-height: 1
   height: 64px;
 }
 .nav-brand {
-  font-family: 'Playfair Display', serif; font-weight: 700;
-  font-size: 1.35rem; color: #2c3e6b;
+  display: inline-flex;
+  align-items: center;
+  height: 48px;
+}
+
+.nav-brand img {
+  display: block;
+  height: 42px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
 }
 .nav-brand span { color: #c0945a; }
 .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
@@ -333,7 +342,9 @@ section { padding: 96px 0; }
 <!-- ========== NAVIGATION ========== -->
 <nav class="site-nav" id="siteNav">
   <div class="nav-inner">
-    <a href="#" class="nav-brand">jason<span>.church</span></a>
+    <a href="#" class="nav-brand" aria-label="jason.church home">
+  <img src="i-love-you-hands.transparent.svg" alt="jason.church — I love you hands graphic">
+</a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#books">Books</a></li>
       <li><a href="#about">About</a></li>
