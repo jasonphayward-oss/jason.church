@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>jason.church — Free Christian Books &amp; Discipleship Resources</title>
+<meta name="description" content="Free Christian books and discipleship resources for seekers and believers worldwide, available in 27+ languages.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #1a1a2e;
+  background: #fdfbf7;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; line-height: 1.25; }
+
+/* ===== UTILITIES ===== */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+/* ===== NAV ===== */
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(253,251,247,0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  transition: box-shadow 0.3s;
+}
+.site-nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.08); }
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 1200px; margin: 0 auto; padding: 0 24px;
+  height: 64px;
+}
+.nav-brand {
+  font-family: 'Playfair Display', serif; font-weight: 700;
+  font-size: 1.35rem; color: #2c3e6b;
+}
+.nav-brand span { color: #c0945a; }
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a {
+  font-size: 0.9rem; font-weight: 500; color: #555;
+  transition: color 0.2s; position: relative;
+}
+.nav-links a:hover, .nav-links a.active { color: #2c3e6b; }
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 2px; background: #c0945a; transition: width 0.3s;
+}
+.nav-links a:hover::after { width: 100%; }
+
+/* Language selector */
+.lang-select-wrap { position: relative; }
+.lang-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 7px 14px; border-radius: 8px; font-size: 0.85rem;
+  font-weight: 500; color: #2c3e6b; background: #eee8dc;
+  transition: background 0.2s;
+}
+.lang-btn:hover { background: #e2d9c8; }
+.lang-btn svg { width: 16px; height: 16px; }
+.lang-dropdown {
+  display: none; position: absolute; top: calc(100% + 8px); right: 0;
+  background: #fff; border-radius: 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  padding: 8px; width: 260px; max-height: 360px; overflow-y: auto; z-index: 100;
+}
+.lang-dropdown.open { display: block; }
+.lang-dropdown a {
+  display: block; padding: 8px 14px; border-radius: 6px;
+  font-size: 0.85rem; color: #333; transition: background 0.15s;
+}
+.lang-dropdown a:hover { background: #f5f0e6; }
+
+/* Mobile nav */
+.nav-toggle { display: none; flex-direction: column; gap: 5px; padding: 4px; }
+.nav-toggle span { display: block; width: 22px; height: 2px; background: #2c3e6b; border-radius: 2px; transition: 0.3s; }
+
+@media (max-width: 768px) {
+  .nav-toggle { display: flex; }
+  .nav-links {
+    display: none; flex-direction: column; position: absolute;
+    top: 64px; left: 0; right: 0; background: #fdfbf7;
+    padding: 16px 24px 24px; gap: 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+  .nav-links.open { display: flex; }
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 92vh; display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 120px 24px 80px;
+  background: linear-gradient(170deg, #fdfbf7 0%, #f0ead6 40%, #e8dcc8 100%);
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: -200px; right: -200px;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(192,148,90,0.12) 0%, transparent 70%);
+}
+.hero::after {
+  content: ''; position: absolute; bottom: -150px; left: -150px;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(44,62,107,0.08) 0%, transparent 70%);
+}
+.hero-content { position: relative; z-index: 1; max-width: 760px; }
+.hero-eyebrow {
+  display: inline-block; font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 2.5px; text-transform: uppercase; color: #c0945a;
+  margin-bottom: 20px;
+}
+.hero h1 { font-size: clamp(2.4rem, 5.5vw, 3.8rem); color: #2c3e6b; margin-bottom: 20px; }
+.hero p {
+  font-size: 1.15rem; color: #555; max-width: 580px; margin: 0 auto 36px;
+}
+.hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 32px; border-radius: 50px; font-size: 0.95rem;
+  font-weight: 600; transition: all 0.25s;
+}
+.btn-primary {
+  background: #2c3e6b; color: #fff; box-shadow: 0 4px 20px rgba(44,62,107,0.25);
+}
+.btn-primary:hover { background: #3a5090; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(44,62,107,0.3); }
+.btn-secondary { background: #fff; color: #2c3e6b; border: 2px solid #d4cbb8; }
+.btn-secondary:hover { border-color: #2c3e6b; background: #f9f6f0; }
+
+/* ===== SECTION COMMON ===== */
+section { padding: 96px 0; }
+.section-header { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+.section-header h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: #2c3e6b; margin-bottom: 14px; }
+.section-header p { color: #666; font-size: 1.05rem; }
+.section-divider { width: 48px; height: 3px; background: #c0945a; border-radius: 2px; margin: 16px auto 0; }
+
+/* ===== BOOKS SECTION ===== */
+#books { background: #fdfbf7; }
+
+/* Filter tabs */
+.filter-bar {
+  display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+.filter-btn {
+  padding: 10px 22px; border-radius: 50px; font-size: 0.88rem;
+  font-weight: 500; color: #666; background: #f0ead6;
+  transition: all 0.2s;
+}
+.filter-btn:hover { background: #e2d9c8; color: #333; }
+.filter-btn.active { background: #2c3e6b; color: #fff; }
+
+/* Search */
+.search-bar {
+  max-width: 480px; margin: 0 auto 40px; position: relative;
+}
+.search-bar input {
+  width: 100%; padding: 14px 20px 14px 48px;
+  border: 2px solid #e2d9c8; border-radius: 50px;
+  font-size: 0.95rem; font-family: inherit; background: #fff;
+  transition: border-color 0.2s;
+}
+.search-bar input:focus { outline: none; border-color: #c0945a; }
+.search-bar svg {
+  position: absolute; left: 18px; top: 50%; transform: translateY(-50%);
+  width: 18px; height: 18px; color: #999;
+}
+
+/* Book grid */
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+}
+@media (max-width: 420px) { .books-grid { grid-template-columns: 1fr; } }
+
+.book-card {
+  background: #fff; border-radius: 16px; padding: 28px;
+  border: 1px solid #ece6d8;
+  transition: transform 0.25s, box-shadow 0.25s;
+  display: flex; flex-direction: column;
+}
+.book-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.08);
+}
+.book-card-badge {
+  display: inline-block; align-self: flex-start;
+  padding: 4px 12px; border-radius: 50px;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 1px;
+  text-transform: uppercase; margin-bottom: 12px;
+}
+.badge-seeker { background: #e8f4ec; color: #2d7a4f; }
+.badge-discipleship { background: #e6ecf5; color: #2c3e6b; }
+.book-card h3 { font-size: 1.15rem; color: #1a1a2e; margin-bottom: 6px; line-height: 1.35; }
+.book-card .book-date { font-size: 0.82rem; color: #999; margin-bottom: 14px; }
+.book-card-actions {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; padding-top: 16px;
+  border-top: 1px solid #f0ead6;
+}
+.book-link {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 7px 14px; border-radius: 8px; font-size: 0.8rem;
+  font-weight: 500; transition: all 0.2s;
+}
+.book-link.read { background: #2c3e6b; color: #fff; }
+.book-link.read:hover { background: #3a5090; }
+.book-link.pdf { background: #f0ead6; color: #6b5a3c; }
+.book-link.pdf:hover { background: #e2d9c8; }
+.book-link.video { background: #fef0e0; color: #b8760a; }
+.book-link.video:hover { background: #fce4c8; }
+.book-link.spanish { background: #e8f4ec; color: #2d7a4f; }
+.book-link.spanish:hover { background: #d4ecdb; }
+
+.no-results {
+  grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: #999;
+}
+.no-results h3 { font-size: 1.3rem; color: #666; margin-bottom: 8px; }
+
+/* ===== ABOUT ===== */
+#about { background: #f5f0e6; }
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;
+}
+@media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
+.about-mission h3 { font-size: 1.5rem; color: #2c3e6b; margin-bottom: 20px; }
+.about-mission ol { padding-left: 20px; }
+.about-mission li { margin-bottom: 14px; color: #444; }
+.about-mission li strong { color: #2c3e6b; }
+.graphic-note {
+  background: #fff; border-radius: 16px; padding: 28px;
+  border-left: 4px solid #c0945a; margin-top: 32px;
+}
+.graphic-note h4 { color: #c0945a; margin-bottom: 8px; font-size: 1rem; }
+.graphic-note p { font-size: 0.92rem; color: #555; }
+
+/* ===== SALVATION ===== */
+#salvation {
+  background: linear-gradient(170deg, #2c3e6b 0%, #1a2744 100%);
+  color: #fff; text-align: center;
+}
+#salvation .section-header h2 { color: #fff; }
+#salvation .section-header p { color: rgba(255,255,255,0.7); }
+.salvation-content {
+  max-width: 700px; margin: 0 auto; background: rgba(255,255,255,0.07);
+  border-radius: 20px; padding: 40px; border: 1px solid rgba(255,255,255,0.1);
+}
+.salvation-content .intro { color: rgba(255,255,255,0.85); margin-bottom: 24px; font-size: 1.05rem; }
+.prayer-text {
+  font-style: italic; color: rgba(255,255,255,0.9); line-height: 1.9;
+  padding: 24px; background: rgba(255,255,255,0.05); border-radius: 12px;
+  border-left: 3px solid #c0945a; margin-bottom: 24px; text-align: left;
+}
+.salvation-content .outro { color: rgba(255,255,255,0.7); font-size: 0.92rem; }
+.salvation-content .verse {
+  display: inline-block; margin-top: 20px; padding: 10px 24px;
+  background: rgba(192,148,90,0.2); border-radius: 50px;
+  color: #c0945a; font-weight: 600; font-size: 0.95rem;
+}
+
+/* ===== CONTACT ===== */
+#contact { background: #fdfbf7; }
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+  max-width: 800px; margin: 0 auto;
+}
+@media (max-width: 600px) { .contact-grid { grid-template-columns: 1fr; } }
+.contact-card {
+  background: #fff; border-radius: 16px; padding: 36px; text-align: center;
+  border: 1px solid #ece6d8; transition: transform 0.2s;
+}
+.contact-card:hover { transform: translateY(-3px); }
+.contact-card .icon {
+  width: 52px; height: 52px; margin: 0 auto 16px;
+  background: #f0ead6; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+}
+.contact-card .icon svg { width: 24px; height: 24px; color: #c0945a; }
+.contact-card h3 { font-size: 1.1rem; color: #2c3e6b; margin-bottom: 8px; }
+.contact-card p { color: #666; font-size: 0.92rem; }
+.contact-card a { color: #c0945a; font-weight: 600; transition: color 0.2s; }
+.contact-card a:hover { color: #a87d45; }
+
+/* ===== FOOTER ===== */
+.site-footer {
+  background: #1a1a2e; color: rgba(255,255,255,0.5);
+  padding: 40px 24px; text-align: center; font-size: 0.85rem;
+}
+.site-footer a { color: #c0945a; }
+.footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; flex-wrap: wrap; }
+.footer-links a { color: rgba(255,255,255,0.6); transition: color 0.2s; }
+.footer-links a:hover { color: #fff; }
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+  position: fixed; bottom: 28px; right: 28px; z-index: 900;
+  width: 48px; height: 48px; border-radius: 50%;
+  background: #2c3e6b; color: #fff; display: flex;
+  align-items: center; justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  opacity: 0; pointer-events: none; transition: all 0.3s;
+}
+.back-to-top.show { opacity: 1; pointer-events: auto; }
+.back-to-top:hover { background: #3a5090; transform: translateY(-2px); }
+.back-to-top svg { width: 20px; height: 20px; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f0ead6; }
+::-webkit-scrollbar-thumb { background: #c0945a; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<!-- ========== NAVIGATION ========== -->
+<nav class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">jason<span>.church</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#books">Books</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#salvation">Faith</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li>
+        <div class="lang-select-wrap">
+          <button class="lang-btn" id="langBtn" aria-expanded="false" aria-label="Choose language">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg>
+            Language
+          </button>
+          <div class="lang-dropdown" id="langDropdown">
+            <a href="https://jason-church.translate.goog/?_x_tr_sl=en&_x_tr_tl=es">🇪🇸 Español</a>
+            <a href="https://jason-church.translate.goog/?_x_tr_sl=en&_x_tr_tl=pt">🇧🇷 Português</a>
+            <a href="https://jason-church.translate.goog/?_x_tr_sl=en&_x_tr_tl=ru">🇷🇺 Русский</a>
+            <a href="https://jason-church.translate.goog/?_x_tr_sl=en&_x_tr_tl=zh-CN">🇨🇳 中文</a>
+            <a href="https://jason-church.translate.goog/?_x_tr_sl=en&_x_tr_tl=fr">🇫🇷 Français</a>
+            <a href="https://jason-church.translate.goog/?_x_tr_sl=en&_x_tr_tl=tl">🇵🇭 Filipino</a>
+            <a href="https://jason-church.translate.goog/?_x_tr_sl=en&_x_tr_tl=de">🇩🇪 Deutsch</a>
+            <a href="https://jason-church.translate.goog/?_x_tr_sl=en&_x_tr_tl=pl">🇵🇱 Polski</a>
+            <a href="https://jason-church.translate.goog/?_x_tr_sl=en&_x_tr_tl=uk">🇺🇦 Українська</a>
+            <a href="https://jason-church.translate.goog/?_x_tr_sl=en&_x_tr_tl=it">🇮🇹 Italiano</a>
+            <a href="https://jason-church.translate.goog/?_x_tr_sl=en&_x_tr_tl=ro">🇷🇴 Română</a>
+            <a href="https://jason-church.translate.goog/?_x_tr_sl=en&_x_tr_tl=am">🇪🇹 አማርኛ</a>
+            <a href="https://jason-church.translate.goog/?_x_tr_sl=en&_x_tr_tl=yo">🇳🇬 Yorùbá</a>
+            <a href="https://jason-church.translate.goog/?_x_tr_sl=en&_x_tr_tl=ig">🇳🇬 Igbo</a>
+            <a href="https://jason-church.translate.goog/?_x_tr_sl=en&_x_tr_tl=ko">🇰🇷 한국어</a>
+            <a href="https://jason-church.translate.goog/?_x_tr_sl=en&_x_tr_tl=ceb">🇵🇭 Cebuano</a>
+            <a href="https://jason-church.translate.goog/?_x_tr_sl=en&_x_tr_tl=ml">🇮🇳 മലയാളം</a>
+            <a href="https://jason-church.translate.goog/?_x_tr_sl=en&_x_tr_tl=ta">🇮🇳 தமிழ்</a>
+            <a href="https://jason-church.translate.goog/?_x_tr_sl=en&_x_tr_tl=ca">🇪🇸 Català</a>
+            <a href="https://jason-church.translate.goog/?_x_tr_sl=en&_x_tr_tl=el">🇬🇷 Ελληνικά</a>
+            <a href="https://jason-church.translate.goog/?_x_tr_sl=en&_x_tr_tl=nl">🇳🇱 Nederlands</a>
+            <a href="https://jason-church.translate.goog/?_x_tr_sl=en&_x_tr_tl=hu">🇭🇺 Magyar</a>
+            <a href="https://jason-church.translate.goog/?_x_tr_sl=en&_x_tr_tl=ht">🇭🇹 Ayisyen</a>
+            <a href="https://jason-church.translate.goog/?_x_tr_sl=en&_x_tr_tl=hi">🇮🇳 हिंदी</a>
+            <a href="https://jason-church.translate.goog/?_x_tr_sl=en&_x_tr_tl=bn">🇧🇩 বাংলা</a>
+            <a href="https://jason-church.translate.goog/?_x_tr_sl=en&_x_tr_tl=mr">🇮🇳 मराठी</a>
+            <a href="https://jason-church.translate.goog/?_x_tr_sl=en&_x_tr_tl=ja">🇯🇵 日本語</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-eyebrow">Free Resources for the Worldwide Church</span>
+    <h1>Faith. Discipleship. For&nbsp;Everyone.</h1>
+    <p>Free books and studies — from exploring faith to growing as a disciple of Jesus Christ — available in 27+ languages for over a billion people.</p>
+    <div class="hero-actions">
+      <a href="#books" class="btn btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Browse Books
+      </a>
+      <a href="#about" class="btn btn-secondary">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== BOOKS ========== -->
+<section id="books">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2>Book Previews &amp; Downloads</h2>
+      <p>Explore writings from seeker-friendly introductions to in-depth discipleship — all free to read, download and share.</p>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="search-bar fade-in">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="bookSearch" placeholder="Search by title…" autocomplete="off">
+    </div>
+
+    <div class="filter-bar fade-in">
+      <button class="filter-btn active" data-filter="all">All Books</button>
+      <button class="filter-btn" data-filter="seeker">Seeker Friendly</button>
+      <button class="filter-btn" data-filter="discipleship">Discipleship</button>
+    </div>
+
+    <div class="books-grid" id="booksGrid">
+      <!-- Cards are injected by JavaScript below -->
+    </div>
+  </div>
+</section>
+
+<!-- ========== ABOUT ========== -->
+<section id="about">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2>About This Ministry</h2>
+      <p>Lifting up Jesus Christ and building up His worldwide church.</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-mission fade-in">
+        <h3>The content on this site is intended to:</h3>
+        <ol>
+          <li><strong>Lift up Jesus Christ</strong> in His fullness, the same yesterday, today, and forever (Hebrews 13:8), as the Way, the Truth, and the Life (John 14:6).</li>
+          <li><strong>Proclaim the gospel of the kingdom</strong> that Jesus Christ preached (Matthew 4:23).</li>
+          <li><strong>Build up His worldwide church,</strong> the body of Christ (1 Corinthians 12:12-13,27; Ephesians 4:15-16), which is the hope of the world.</li>
+        </ol>
+        <p style="margin-top:20px;color:#555;">If you are a Christ follower looking for community or are already in a small group community of Christ followers, check out <a href="https://www.teams.church" target="_blank" rel="noopener" style="color:#c0945a;font-weight:600;">www.teams.church</a>. Both websites are translatable into more than 20 of the most common languages spoken by the worldwide church in order to make them accessible to more than a billion people.</p>
+      </div>
+      <div class="fade-in">
+        <div class="graphic-note">
+          <h4>About the Graphic</h4>
+          <p>The love of God inspires the graphic shown on this .church site. In sign language around the world, the way to say "I love you" is to extend the thumb, the index finger, and the little finger. The love of the Father is perfected in the love of Jesus Christ, now enthroned at His right hand. They have shed this love abroad through the Holy Spirit that is in the church, represented by the formation of the two hands coming together. This is the fullness of the love of God.</p>
+        </div>
+        <div class="graphic-note" style="margin-top:20px; border-left-color: #2c3e6b;">
+          <h4 style="color:#2c3e6b;">Download &amp; Translation Tips</h4>
+          <p>All books are hosted on Google Drive. To translate a document: open the Google Docs file on a computer, click <strong>Tools → Translate document</strong>, choose your language, and click Translate. Almost all Bible references are linked to <a href="https://bible.com" target="_blank" rel="noopener" style="color:#c0945a;font-weight:600;">bible.com</a> so you can choose your preferred Bible version in your language.</p>
+          <p style="margin-top:10px;">For eBook formats (KPF, EPUB), contact <a href="mailto:teams.church@gmail.com" style="color:#c0945a;font-weight:600;">teams.church@gmail.com</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SALVATION ========== -->
+<section id="salvation">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2>A Prayer of Salvation</h2>
+      <p>God loves you — no matter who you are, no matter what your past.</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="salvation-content fade-in">
+      <p class="intro">God loves you so much that He gave His one and only begotten Son for you. The Bible tells us that <em>"...whoever believes in him shall not perish but have eternal life"</em> (John 3:16 NIV). Jesus laid down His life and rose again so that we could spend eternity with Him in heaven and experience His absolute best on earth. If you would like to receive Jesus into your life, say the following prayer out loud and mean it from your heart.</p>
+      <div class="prayer-text">
+        Heavenly Father, I come to You admitting that I am a sinner. Right now, I choose to turn away from sin, and I ask You to cleanse me of all unrighteousness. I believe that Your Son, Jesus, died on the cross to take away my sins. I also believe that He rose again from the dead so that I would be forgiven of my sins and made righteous through faith in Him. I call upon the name of Jesus Christ to be the Savior and Lord of my life. Jesus, I choose to follow You and ask that You fill me with the power of the Holy Spirit. I declare that right now I am a child of God. I am free from sin and full of the righteousness of God. I am saved in Jesus' name. Amen.
+      </div>
+      <p class="outro">(Text and prayer by HC)</p>
+      <span class="verse">"Christ in you, the hope of glory" — Colossians 1:27</span>
+      <p class="outro" style="margin-top:24px;">If you prayed this prayer to receive Jesus Christ as your Savior for the first time, please contact <a href="mailto:teams.church@gmail.com" style="color:#c0945a;">teams.church@gmail.com</a> or message on <a href="https://www.threads.net/@_jason.church" target="_blank" rel="noopener" style="color:#c0945a;">Threads</a> or <a href="https://www.instagram.com/" target="_blank" rel="noopener" style="color:#c0945a;">Instagram</a>. You should also read <em>Word Prompts for Salvation and Discipleship</em>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2>Get in Touch</h2>
+      <p>For eBook requests, questions, suggestions or discipleship — please introduce yourself.</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="contact-grid fade-in">
+      <div class="contact-card">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <h3>Email</h3>
+        <p><a href="mailto:teams.church@gmail.com">teams.church@gmail.com</a></p>
+      </div>
+      <div class="contact-card">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0012 7.5v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+        </div>
+        <h3>Social</h3>
+        <p>Threads: <a href="https://www.threads.net/@_jason.church" target="_blank" rel="noopener">@_jason.church</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="#books">Books</a>
+    <a href="#about">About</a>
+    <a href="#salvation">Faith</a>
+    <a href="#contact">Contact</a>
+    <a href="https://www.teams.church" target="_blank" rel="noopener">teams.church</a>
+  </div>
+  <p>jason.church &mdash; Lifting up Jesus Christ and building up His worldwide church.</p>
+</footer>
+
+<!-- Back to top -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+// ===== BOOK DATA =====
+const books = [
+  // SEEKER FRIENDLY
+  {
+    title: "The Rightside Up: Finding Hope in the Upside Down",
+    category: "seeker",
+    date: "January 2026",
+    gdoc: null,
+    pdf: null,
+    spanishPdf: null,
+    youtube: null
+  },
+  {
+    title: "Reality",
+    category: "seeker",
+    date: "October 2023",
+    gdoc: "https://drive.google.com/open?id=185ykZ2zDWGQptovTWxmH6dtta8nWc0WBW9awHq4Tv5c",
+    pdf: "Reality.pdf",
+    spanishPdf: "Spanish copy of Reality.pdf",
+    youtube: true
+  },
+  {
+    title: "Reason Meets Revelation: A Critical Dialogue Between Faith and Doubt",
+    category: "seeker",
+    date: "February 2026",
+    gdoc: null,
+    pdf: null,
+    spanishPdf: null,
+    youtube: null
+  },
+  {
+    title: "God is Good",
+    category: "seeker",
+    date: "October 2023",
+    gdoc: "https://drive.google.com/open?id=1SDVImQaMVHf8VbidVV-4kJTncD6Z3vU7oERF0Tpcjc8",
+    pdf: "God is good.pdf",
+    spanishPdf: "Spanish copy of God is good.pdf",
+    youtube: true
+  },
+  {
+    title: "God So Loved the World",
+    category: "seeker",
+    date: "November 2023",
+    gdoc: "https://drive.google.com/open?id=1LcjbTqfFogtbRS6GHHx_tXvZ1GDBdFdvAeTm0XuLqO8",
+    pdf: "God so loved the world.pdf",
+    spanishPdf: "Spanish copy of God so loved the world.pdf",
+    youtube: true
+  },
+  {
+    title: "Believe",
+    category: "seeker",
+    date: "November 2025",
+    gdoc: null,
+    pdf: null,
+    spanishPdf: null,
+    youtube: null
+  },
+
+  // DISCIPLESHIP
+  {
+    title: "Dating to Marry: Knowing Them By Their Fruit",
+    category: "discipleship",
+    date: "February 2026",
+    gdoc: null, pdf: null, spanishPdf: null, youtube: null
+  },
+  {
+    title: "Jesus' Words on Love, Light and Life",
+    category: "discipleship",
+    date: "September 2022",
+    gdoc: "https://drive.google.com/open?id=1_Vw5RE6e_C-M7vOL08X1DkUXur0gKCe70ESegOi_TiA",
+    pdf: "Jesus' words on love, light, and life.pdf",
+    spanishPdf: "Spanish copy of Jesus on love, light, and life.pdf",
+    youtube: true
+  },
+  {
+    title: "Word Prompts for Salvation and Discipleship",
+    category: "discipleship",
+    date: "October 2023",
+    gdoc: "https://drive.google.com/open?id=1lkCGVNorYhfNIr6Uxx6M5BJQKlREIudHOtG9OyGcUQU",
+    pdf: "Word prompts.pdf",
+    spanishPdf: "Spanish copy of Word prompts.pdf",
+    youtube: true
+  },
+  {
+    title: "Rooms",
+    category: "discipleship",
+    date: "November 2023",
+    gdoc: "https://drive.google.com/open?id=1HPWeZAOgTKuYzQ91My2-Le9yHYnI4r4gWRzepXO3q8Q",
+    pdf: "Rooms.pdf",
+    spanishPdf: "Spanish copy of Rooms.pdf",
+    youtube: true
+  },
+  {
+    title: "The ABCDs of Discipleship",
+    category: "discipleship",
+    date: "November 2025",
+    gdoc: null, pdf: null, spanishPdf: null, youtube: null
+  },
+  {
+    title: "Work",
+    category: "discipleship",
+    date: "February 2024",
+    gdoc: "https://drive.google.com/open?id=1NgjRu9ThpaW8LdS1V8R6EajS9Jt1P-7iQo24_7SwVJQ",
+    pdf: "Work.pdf",
+    spanishPdf: "Spanish copy of Work.pdf",
+    youtube: true
+  },
+  {
+    title: "As In Heaven: Living the Copy of Heavenly Reality",
+    category: "discipleship",
+    date: "December 2025 (draft)",
+    gdoc: null, pdf: null, spanishPdf: null, youtube: null
+  },
+  {
+    title: "God's Will",
+    category: "discipleship",
+    date: "March 2024",
+    gdoc: "https://drive.google.com/open?id=1w5umPjO8JQw5rQGxOaKra3gJg18Du2fP8fiA92Rs9to",
+    pdf: "God's will.pdf",
+    spanishPdf: "Spanish copy of God's will.pdf",
+    youtube: true
+  },
+  {
+    title: "Doing Good",
+    category: "discipleship",
+    date: "April 2024",
+    gdoc: "https://drive.google.com/open?id=1oVJPf1JqqcbfhkAhqkCF0DOfymzqBLSYIWqNZS73QoY",
+    pdf: "Doing good.pdf",
+    spanishPdf: "Spanish copy of Doing good.pdf",
+    youtube: true
+  },
+  {
+    title: "Growing Up into Christ",
+    category: "discipleship",
+    date: "August 2024",
+    gdoc: "https://drive.google.com/open?id=18VzFkgiDMQ7VJvREECG3fhwaRtCbGpd-lN2xXe0T98I",
+    pdf: "Growing up into Christ.pdf",
+    spanishPdf: "Spanish copy of Growing up into Christ.pdf",
+    youtube: true
+  },
+  {
+    title: "The Songs We Sing",
+    category: "discipleship",
+    date: "April 2024",
+    gdoc: "https://drive.google.com/open?id=12tHZyXZBzjC_Gbr-RUtoopkwCocI59rrlmvyKOu7C6A",
+    pdf: "The Songs We Sing.pdf",
+    spanishPdf: "Spanish copy of The Songs We Sing.pdf",
+    youtube: true
+  },
+  {
+    title: "Life, Liberty and the Pursuit of Happiness in Christ",
+    category: "discipleship",
+    date: "July 2023",
+    gdoc: "https://drive.google.com/open?id=1S1bl0qOFqYqNBFjQ72koA0JoGqbRuiouJd30jYnCPlk",
+    pdf: "Life, Liberty and the Pursuit of Happiness in Christ.pdf",
+    spanishPdf: "Spanish copy of Life, Liberty and the Pursuit of Happiness in Christ.pdf",
+    youtube: true
+  },
+  {
+    title: "The Purpose Driven Life Group Discussion and Bible Study Guide",
+    category: "discipleship",
+    date: "March 2023",
+    gdoc: "https://drive.google.com/open?id=1F0WWUqqocP6rihocb8QiqsyXi2xOdB2b_JesmbcYo6o",
+    pdf: "Purpose Driven Life Group Discussion and Bible Study Guide.pdf",
+    spanishPdf: "Spanish copy of Purpose Driven Life Group Discussion and Bible Study Guide.pdf",
+    youtube: true
+  },
+  {
+    title: "Discipleship for Teens",
+    category: "discipleship",
+    date: "August 2024",
+    gdoc: "https://drive.google.com/open?id=1rLaAgdr-5nsKv9ObgLTMV78SSN8BJN-6iHMUASf_6jk",
+    pdf: "Discipleship for teens.pdf",
+    spanishPdf: "Spanish copy of Discipleship for teens.pdf",
+    youtube: true
+  },
+  {
+    title: "The Living Word: God's Active Power in Scripture and Life",
+    category: "discipleship",
+    date: "December 2025 (draft)",
+    gdoc: null, pdf: null, spanishPdf: null, youtube: null
+  },
+  {
+    title: "Identity in Christ: Characteristics of Christ in You (Vol 1)",
+    category: "discipleship",
+    date: "May 2022",
+    gdoc: "https://drive.google.com/open?id=1Dbuamg7afBW5ZywrCrnKqtVHf4xNwEWy493DmnVtst4",
+    pdf: "Identity in Christ_ Characteristics of Christ in you Vol 1.pdf",
+    spanishPdf: "Spanish copy of Identity in Christ_ Characteristics of Christ in you Vol 1.pdf",
+    youtube: true
+  },
+  {
+    title: "Identity in Christ: Characteristics of Christ in You (Vol 2)",
+    category: "discipleship",
+    date: "January 2023",
+    gdoc: "https://drive.google.com/open?id=112JEEVuyF3lIfo9IJMCd0XfyQ-g14OBAMHDrPXREvW4",
+    pdf: "Identity in Christ_ Characteristics of Christ in you Vol 2.pdf",
+    spanishPdf: "Spanish copy of Identity in Christ_ Characteristics of Christ in you Vol 2.pdf",
+    youtube: true
+  },
+  {
+    title: "#saved",
+    category: "discipleship",
+    date: "September 2023",
+    gdoc: "https://drive.google.com/open?id=11i8tJSNKNLB1RV8qX__dNClEPiRZXXw__Im7Ddp3yPQ",
+    pdf: "#saved.pdf",
+    spanishPdf: "Spanish copy of #saved.pdf",
+    youtube: true
+  },
+  {
+    title: "Directly Connected to the Spirit, Mind and Body of Christ",
+    category: "discipleship",
+    date: "April 2023",
+    gdoc: "https://drive.google.com/open?id=1CSa9z718OmNzFPxfqswHTrnMeCe8YyrvyVyhUL3AnE8",
+    pdf: "Directly Connected to the Spirit, Mind, and Body of Christ.pdf",
+    spanishPdf: "Spanish copy of Directly Connected to the Spirit, Mind, and Body of Christ.pdf",
+    youtube: true
+  },
+  {
+    title: "#married",
+    category: "discipleship",
+    date: "February 2024",
+    gdoc: "https://drive.google.com/open?id=1VflOXbjWuffxYAh4KzuTR4afdUcZ2UnC8MbSc_ayCyQ",
+    pdf: "#married.pdf",
+    spanishPdf: "Spanish copy of #married.pdf",
+    youtube: true
+  },
+  {
+    title: "Flipping Strongholds",
+    category: "discipleship",
+    date: "February 2024",
+    gdoc: "https://drive.google.com/open?id=1h88Zyt4gp0Iw3yUt7gMEo_vrJ6xFgQxxdv_7vFqfFsI",
+    pdf: "Flipping strongholds.pdf",
+    spanishPdf: "Spanish copy of Flipping strongholds.pdf",
+    youtube: true
+  },
+  {
+    title: "The Gospel of the Kingdom",
+    category: "discipleship",
+    date: "January 2024",
+    gdoc: "https://drive.google.com/open?id=1xBIiP-uIxPA_9EQESR7cOEp7Nk-xblo_riwswe8lD0s",
+    pdf: "The gospel of the kingdom.pdf",
+    spanishPdf: "Spanish copy of The gospel of the kingdom.pdf",
+    youtube: true
+  },
+  {
+    title: "The Words We Speak",
+    category: "discipleship",
+    date: "June 2023",
+    gdoc: "https://drive.google.com/open?id=1nNVb1s0Hw90zJyFghyyYh0DVFm7Gh5V_maXSQNOJBhg",
+    pdf: "The words we speak.pdf",
+    spanishPdf: "Spanish copy of The words we speak.pdf",
+    youtube: true
+  },
+  {
+    title: "Declared and Renewed",
+    category: "discipleship",
+    date: "March 2026",
+    gdoc: null, pdf: null, spanishPdf: null, youtube: null
+  },
+  {
+    title: "PROVIDED: God's Economy for His People and His Work",
+    category: "discipleship",
+    date: "July 2026",
+    gdoc: null, pdf: null, spanishPdf: null, youtube: null
+  },
+  {
+    title: "God's Love Plan in Jesus and the Church: 40 Days in the Old Testament",
+    category: "discipleship",
+    date: "February 2022",
+    gdoc: "https://drive.google.com/open?id=1bWzs_pUQEG25n-Kt36MjiGNvUlh6LN9dO66T_LZGTNY",
+    pdf: "God's Love Plan Old Testament.pdf",
+    spanishPdf: "Spanish copy of God's Love Plan Old Testament.pdf",
+    youtube: true
+  },
+  {
+    title: "Experiencing Jesus through Peter",
+    category: "discipleship",
+    date: "February 2022",
+    gdoc: "https://drive.google.com/open?id=1zEt_zDn9zP-KexOjzITKQ_px5OMwxfnm55HdTwvZyr4",
+    pdf: "Experiencing Jesus through Peter.pdf",
+    spanishPdf: "Spanish copy of Experiencing Jesus through Peter.pdf",
+    youtube: true
+  },
+  {
+    title: "Experiencing Christ in Paul",
+    category: "discipleship",
+    date: "October 2022",
+    gdoc: "https://drive.google.com/open?id=10ze3xmwLJf8-NvszMB-RZn2dcLDL0x9Im9vO-yn0_fg",
+    pdf: "Experiencing Christ in Paul.pdf",
+    spanishPdf: "Spanish copy of Experiencing Christ in Paul.pdf",
+    youtube: true
+  },
+  {
+    title: "The Living Body: Christ's Continued Ministry Through His Church",
+    category: "discipleship",
+    date: "January 2026",
+    gdoc: null, pdf: null, spanishPdf: null, youtube: null
+  },
+  {
+    title: "Modern Corban: When Church Traditions Nullify Obedience to God",
+    category: "discipleship",
+    date: "February 2026",
+    gdoc: null, pdf: null, spanishPdf: null, youtube: null
+  },
+  {
+    title: "Two Books, One Author: Reconciling Scripture and Science in Understanding Creation",
+    category: "discipleship",
+    date: "August 2026",
+    gdoc: null, pdf: null, spanishPdf: null, youtube: null
+  }
+];
+
+// ===== RENDER BOOKS =====
+const grid = document.getElementById('booksGrid');
+let currentFilter = 'all';
+let currentSearch = '';
+
+function renderBooks() {
+  const filtered = books.filter(b => {
+    const matchCat = currentFilter === 'all' || b.category === currentFilter;
+    const matchSearch = b.title.toLowerCase().includes(currentSearch.toLowerCase());
+    return matchCat && matchSearch;
+  });
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div class="no-results"><h3>No books found</h3><p>Try a different search term or filter.</p></div>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(b => {
+    const badgeClass = b.category === 'seeker' ? 'badge-seeker' : 'badge-discipleship';
+    const badgeLabel = b.category === 'seeker' ? 'Seeker Friendly' : 'Discipleship';
+
+    let actions = '';
+    if (b.gdoc) actions += `<a href="${b.gdoc}" target="_blank" rel="noopener" class="book-link read">📖 Read</a>`;
+    if (b.youtube) actions += `<a href="#" class="book-link video" onclick="return false;">▶ YouTube Intro</a>`;
+    if (b.pdf) actions += `<a href="#" class="book-link pdf" onclick="return false;">⬇ PDF</a>`;
+    if (b.spanishPdf) actions += `<a href="#" class="book-link spanish" onclick="return false;">🇪🇸 Spanish PDF</a>`;
+    if (!b.gdoc && !b.pdf) actions += `<span class="book-link pdf" style="opacity:0.5;cursor:default;">Coming soon</span>`;
+
+    return `
+      <div class="book-card">
+        <span class="book-card-badge ${badgeClass}">${badgeLabel}</span>
+        <h3>${b.title}</h3>
+        <p class="book-date">${b.date}</p>
+        <div class="book-card-actions">${actions}</div>
+      </div>`;
+  }).join('');
+}
+
+renderBooks();
+
+// ===== FILTER BUTTONS =====
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = btn.dataset.filter;
+    renderBooks();
+  });
+});
+
+// ===== SEARCH =====
+document.getElementById('bookSearch').addEventListener('input', e => {
+  currentSearch = e.target.value;
+  renderBooks();
+});
+
+// ===== LANGUAGE DROPDOWN =====
+const langBtn = document.getElementById('langBtn');
+const langDropdown = document.getElementById('langDropdown');
+langBtn.addEventListener('click', () => {
+  const open = langDropdown.classList.toggle('open');
+  langBtn.setAttribute('aria-expanded', open);
+});
+document.addEventListener('click', e => {
+  if (!e.target.closest('.lang-select-wrap')) {
+    langDropdown.classList.remove('open');
+    langBtn.setAttribute('aria-expanded', 'false');
+  }
+});
+
+// ===== MOBILE NAV =====
+document.getElementById('navToggle').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.querySelectorAll('.nav-links a[href^="#"]').forEach(a => {
+  a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+});
+
+// ===== SCROLL EFFECTS =====
+const nav = document.getElementById('siteNav');
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+  backToTop.classList.toggle('show', window.scrollY > 600);
+});
+backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// ===== FADE IN ON SCROLL =====
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
