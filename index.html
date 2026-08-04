@@ -880,7 +880,7 @@ function renderBooks() {
     let actions = '';
     if (b.gdoc) actions += `<a href="${b.gdoc}" target="_blank" rel="noopener" class="book-link read">📖 Read</a>`;
     if (b.youtube) actions += `<a href="#" class="book-link video" onclick="return false;">▶ YouTube Intro</a>`;
-    if (b.pdf) actions += `<a href="#" class="book-link pdf" onclick="return false;">⬇ PDF</a>`;
+    if (b.pdf) actions += `<a href="https://drive.google.com/uc?export=download&id=${b.pdfId}" class="book-link pdf">⬇ PDF</a>`;
     if (b.spanishPdf) actions += `<a href="#" class="book-link spanish" onclick="return false;">🇪🇸 Spanish PDF</a>`;
     if (!b.gdoc && !b.pdf) actions += `<span class="book-link pdf" style="opacity:0.5;cursor:default;">Coming soon</span>`;
 
