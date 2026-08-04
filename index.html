@@ -881,7 +881,7 @@ function renderBooks() {
     if (b.gdoc) actions += `<a href="${b.gdoc}" target="_blank" rel="noopener" class="book-link read">📖 Read</a>`;
     if (b.youtube) actions += `<a href="#" class="book-link video" onclick="return false;">▶ YouTube Intro</a>`;
     if (b.pdf) {actions += `<a href="${b.pdf}" class="book-link pdf" download>⬇ PDF</a>`;}
-    if (b.spanishPdf) actions += `<a href="#" class="book-link spanish" onclick="return false;">🇪🇸 Spanish PDF</a>`;
+   if (b.spanishPdf) {actions += `<a href="${b.spanishPdf}" class="book-link pdf" download>⬇ PDF (Español)</a>`;}
     if (!b.gdoc && !b.pdf) actions += `<span class="book-link pdf" style="opacity:0.5;cursor:default;">Coming soon</span>`;
 
     return `
